@@ -54,7 +54,7 @@
                 <!-- Episodio 1 -->
                 <div class="episode-card" onclick="openEpisode(1)">
                     <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80" alt="Episodio 1">
+                        <img src="https://i.ibb.co/qFk1JwZM/IMG-20220704-WA0185.jpg" alt="Episodio 1">
                         <span class="card-number">1</span>
                         <span class="card-duration">15m</span>
                     </div>
@@ -62,7 +62,7 @@
                 <!-- Episodio 2 -->
                 <div class="episode-card" onclick="openEpisode(2)">
                     <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="Episodio 2">
+                        <img src="https://i.ibb.co/jvDGbt8Z/190674.jpg" alt="Episodio 2">
                         <span class="card-number">2</span>
                         <span class="card-duration">45m</span>
                     </div>
@@ -70,7 +70,7 @@
                 <!-- Episodio 3 -->
                 <div class="episode-card" onclick="openEpisode(3)">
                     <div class="card-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" alt="Episodio 3">
+                        <img src="https://i.ibb.co/fz0Khs9T/In-Shot-20260122-135553607.jpg" alt="Episodio 3">
                         <span class="card-number">3</span>
                         <span class="card-duration">∞</span>
                     </div>
@@ -92,7 +92,7 @@
                     
                     <!-- Serie 1 -->
                     <div class="series-card">
-                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80" alt="Serie 1">
+                        <img src="https://i.ibb.co/dwb6ng1Y/IMG-20220704-WA0194.jpg" alt="Serie 1">
                         <div class="series-info">
                             <span class="series-match">100% Coincidencia</span>
                             <h3>1. El Primer Chispazo</h3>
@@ -102,7 +102,7 @@
 
                     <!-- Serie 2 -->
                     <div class="series-card">
-                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="Serie 2">
+                        <img src="https://i.ibb.co/wTP0n5f/IMG-20260724-141750919.jpg" alt="Serie 2">
                         <div class="series-info">
                             <span class="series-match">99% Coincidencia</span>
                             <h3>2. Nuestra Primera Cita</h3>
@@ -112,7 +112,12 @@
 
                     <!-- Serie 3 -->
                     <div class="series-card">
-                        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" alt="Serie 3">
+                        <div style="position:relative; width:100%; height:0px; padding-bottom:56.25%; overflow:hidden;">
+                            <iframe allow="fullscreen" allowfullscreen
+                                     src="https://streamable.com/e/e1es11?"
+                                     style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;">
+                            </iframe>
+                        <div>
                         <div class="series-info">
                             <span class="series-match">100% Amor</span>
                             <h3>3. El Sí Oficial</h3>
@@ -130,7 +135,7 @@
 
                     <!-- Serie 4 -->
                     <div class="series-card">
-                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80" alt="Serie 4">
+                        <img src="https://i.ibb.co/hx12DDRh/IMG-20260724-140429960.jpg" alt="Serie 4">
                         <div class="series-info">
                             <span class="series-match">98% Coincidencia</span>
                             <h3>4. Escapadas y Viajes</h3>
@@ -140,7 +145,7 @@
 
                     <!-- Serie 5 -->
                     <div class="series-card">
-                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Serie 5">
+                        <img src="https://i.ibb.co/nNcQnkNH/20260724-122757.jpg" alt="Serie 5">
                         <div class="series-info">
                             <span class="series-match">100% Eterno</span>
                             <h3>5. Un Futuro Juntos</h3>
@@ -155,35 +160,40 @@
     </div>
 
     <!-- SECCIÓN: MÚSICA -->
-    <div id="tab-musica" class="tab-content">
-        <div class="music-container">
-            <h1 class="page-title">Música</h1>
-            <div class="player-card">
-                <div class="vinyl-container">
-                    <div class="vinyl-disc" id="vinyl">
-                        <div class="vinyl-center"></div>
-                    </div>
-                    <i data-lucide="music" class="music-icon"></i>
+<div id="tab-musica" class="tab-content">
+    <div class="music-container">
+        <h1 class="page-title">Música</h1>
+        <div class="player-card">
+            <div class="vinyl-container">
+                <div class="vinyl-disc" id="vinyl">
+                    <div class="vinyl-center"></div>
                 </div>
-                <div class="player-info">
-                    <h2>MI ESPOSA | NUESTRA HISTORIA</h2>
-                    <button class="btn-heart"><i data-lucide="heart"></i></button>
-                </div>
-                <div class="player-controls">
-                    <button class="btn-play-music" onclick="togglePlayMusic()">
-                        <i id="play-icon" data-lucide="play"></i>
-                    </button>
-                    <div class="progress-bar-container">
-                        <span id="current-time">0:00</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progress-fill"></div>
-                        </div>
-                        <span>2:57</span>
+                <i data-lucide="music" class="music-icon"></i>
+            </div>
+            
+            <div class="player-info">
+                <h2>MI ESPOSA | NUESTRA HISTORIA</h2>
+                <button class="btn-heart"><i data-lucide="heart"></i></button>
+            </div>
+
+            <!-- Etiqueta de Audio Oculta con la canción real -->
+            <audio id="audio-player" src="https://www.dropbox.com/scl/fi/qderq8kmt5lenqmlfjrqh/Puerto_donde_descansar.mp3?rlkey=muq9emda7c1dum0cg6rj3bptt&st=ff681d1j&raw=1"></audio>
+
+            <div class="player-controls">
+                <button class="btn-play-music" onclick="togglePlayMusic()">
+                    <i id="play-icon" data-lucide="play"></i>
+                </button>
+                <div class="progress-bar-container">
+                    <span id="current-time">0:00</span>
+                    <div class="progress-bar" id="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
                     </div>
+                    <span id="total-duration">0:00</span>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
     <!-- SECCIÓN: MI LISTA -->
     <div id="tab-milista" class="tab-content">

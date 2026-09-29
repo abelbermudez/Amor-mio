@@ -6,17 +6,17 @@ const episodesData = {
     1: {
         title: "1. El inicio de algo bonito",
         description: "Donde todo comenzó. Recordar los primeros días a su lado siempre me saca una sonrisa y me confirma que tomar su mano siempre es la mejor decisión.",
-        image: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80"
+        image: "https://i.ibb.co/qFk1JwZM/IMG-20220704-WA0185.jpg"
     },
     2: {
         title: "2. Nuestros mejores momentos",
         description: "Viajes, risas, salidas y aventuras. Cada día a su lado es una nueva historia que vale la pena guardar para siempre.",
-        image: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80"
+        image: "https://i.ibb.co/jvDGbt8Z/190674.jpg"
     },
     3: {
         title: "3. Por muchos meses más",
-        description: "1 año y 3 meses son solo el comienzo de todo lo que nos espera por vivir juntos. Te amo con todo mi corazón.",
-        image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=800&q=80"
+        description: "1 año y 2 meses son solo el comienzo de todo lo que nos espera por vivir juntos. Te amo con todo mi corazón.",
+        image: "https://i.ibb.co/dwb6ng1Y/IMG-20220704-WA0194.jpg"
     }
 };
 
@@ -63,46 +63,41 @@ window.onclick = function(event) {
     }
 };
 
-// Reproductor de Música
-let isPlaying = false;
-let progressInterval = null;
+// Reproducir y Pausar Música
+const audio = document.getElementById('audio-player');
+const playIcon = document.getElementById('play-icon');
+const vinyl = document.getElementById('vinyl');
+const progressFill = document.getElementById('progress-fill');
+const currentTimeEl = document.getElementById('current-time');
+const totalDurationEl = document.getElementById('total-duration');
 
 function togglePlayMusic() {
-    const vinyl = document.getElementById('vinyl');
-    const playIcon = document.getElementById('play-icon');
-    const progressFill = document.getElementById('progress-fill');
-    const currentTimeEl = document.getElementById('current-time');
-    
-    isPlaying = !isPlaying;
-
-    if (isPlaying) {
-        vinyl.classList.add('playing');
+    if (audio.paused) {
+        audio.play();
         playIcon.setAttribute('data-lucide', 'pause');
-        lucide.createIcons();
-
-        let progress = 0;
-        let seconds = 0;
-        
-        progressInterval = setInterval(() => {
-            progress += 1;
-            seconds += 1;
-            
-            if (progress > 100) {
-                progress = 0;
-                seconds = 0;
-            }
-
-            progressFill.style.width = `${progress}%`;
-            
-            let mins = Math.floor(seconds / 60);
-            let secs = seconds % 60;
-            currentTimeEl.textContent = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-        }, 1000);
-
+        vinyl.classList.add('playing');
     } else {
-        vinyl.classList.remove('playing');
+        audio.pause();
         playIcon.setAttribute('data-lucide', 'play');
-        lucide.createIcons();
-        clearInterval(progressInterval);
+        vinyl.classList.remove('playing');
     }
+    lucide.createIcons();
 }
+
+// Actualizar barra de progreso y tiempo actual
+audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+        const progressPercent = (audio.currentTime / audio.duration) * 100;
+        progressFill.style.width = `${progressPercent}%`;
+
+        // Formatear tiempo actual (minutos:segundos)
+        const currentMin = Math.floor(audio.currentTime / 60);
+        const currentSec = Math.floor(audio.currentTime % 60);
+        currentTimeEl.textContent = `${currentMin}:${currentSec < 10 ? '0' : ''}${currentSec}`;
+
+        // Formatear duración total
+        const totalMin = Math.floor(audio.duration / 60);
+        const totalSec = Math.floor(audio.duration % 60);
+        totalDurationEl.textContent = `${totalMin}:${totalSec < 10 ? '0' : ''}${totalSec}`;
+    }
+});
