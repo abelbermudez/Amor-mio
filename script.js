@@ -139,10 +139,22 @@ audio.addEventListener('pause', () => {
 });
 
 function togglePlayMusic() {
+    const audio = document.getElementById('audio-player');
+    const playBtn = document.querySelector('.btn-play-music-lg');
+
     if (audio.paused) {
         audio.play();
+        // Cambia el ícono a 'pause'
+        playBtn.innerHTML = '<i data-lucide="pause"></i>';
     } else {
         audio.pause();
+        // Cambia el ícono a 'play'
+        playBtn.innerHTML = '<i data-lucide="play"></i>';
+    }
+
+    // Fuerza a Lucide a renderizar el nuevo SVG del ícono
+    if (window.lucide) {
+        lucide.createIcons();
     }
 }
 
