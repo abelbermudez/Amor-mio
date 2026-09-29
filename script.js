@@ -1,5 +1,7 @@
 // Inicializar iconos de Lucide
-lucide.createIcons();
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.lucide) lucide.createIcons();
+});
 
 // 1. DATOS DE LOS EPISODIOS (SECCIÓN INICIO)
 const episodesData = {
@@ -127,6 +129,7 @@ const audio = document.getElementById('audio-player');
 const playIcon = document.getElementById('play-icon');
 const vinyl = document.getElementById('vinyl');
 const progressFill = document.getElementById('progress-fill');
+const progressBar = document.getElementById('progress-bar');
 const currentTimeEl = document.getElementById('current-time');
 const totalDurationEl = document.getElementById('total-duration');
 
@@ -147,14 +150,6 @@ function togglePlayMusic() {
 
 // Cargar duración y progreso del audio
 if (audio) {
-    audio.addEventListener('loadedmetadata', () => {
-        const totalMin = Math.floor(audio.duration / 60);
-        const totalSec = Math.floor(audio.duration % 60);
-        if (totalDurationEl) {
-            totalDurationEl.textContent = `${totalMin}:${totalSec < 10 ? '0' : ''}${totalSec}`;
-        }
-    });
-
     audio.addEventListener('timeupdate', () => {
         if (audio.duration) {
             const progressPercent = (audio.currentTime / audio.duration) * 100;
@@ -165,6 +160,23 @@ if (audio) {
             if (currentTimeEl) {
                 currentTimeEl.textContent = `${currentMin}:${currentSec < 10 ? '0' : ''}${currentSec}`;
             }
+
+            const totalMin = Math.floor(audio.duration / 60);
+            const totalSec = Math.floor(audio.duration % 60);
+            if (totalDurationEl) {
+                totalDurationEl.textContent = `${totalMin}:${totalSec < 10 ? '0' : ''}${totalSec}`;
+            }
         }
     });
+
+    if (progressBar) {
+        progressBar.addEventListener('click', (e) => {
+            const width = progressBar.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audio.duration;
+            if (duration) {
+                audio.currentTime = (clickX / width) * duration;
+            }
+        });
+    }
 }
