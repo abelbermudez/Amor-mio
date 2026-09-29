@@ -126,26 +126,24 @@ window.onclick = function(event) {
 
 // 7. MANEJO DEL REPRODUCTOR DE AUDIO (MÚSICA)
 const audio = document.getElementById('audio-player');
-const playIcon = document.getElementById('play-icon');
-const vinyl = document.getElementById('vinyl');
-const progressFill = document.getElementById('progress-fill');
-const progressBar = document.getElementById('progress-bar');
-const currentTimeEl = document.getElementById('current-time');
-const totalDurationEl = document.getElementById('total-duration');
+const playBtn = document.querySelector('.btn-play-music-lg');
+
+audio.addEventListener('play', () => {
+    playBtn.innerHTML = '<i data-lucide="pause"></i>';
+    if (window.lucide) lucide.createIcons();
+});
+
+audio.addEventListener('pause', () => {
+    playBtn.innerHTML = '<i data-lucide="play"></i>';
+    if (window.lucide) lucide.createIcons();
+});
 
 function togglePlayMusic() {
-    if (!audio) return;
-    
     if (audio.paused) {
-        audio.play().catch(err => console.log("Error al reproducir audio:", err));
-        if (playIcon) playIcon.setAttribute('data-lucide', 'pause');
-        if (vinyl) vinyl.classList.add('playing');
+        audio.play();
     } else {
         audio.pause();
-        if (playIcon) playIcon.setAttribute('data-lucide', 'play');
-        if (vinyl) vinyl.classList.remove('playing');
     }
-    if (window.lucide) lucide.createIcons();
 }
 
 // Cargar duración y progreso del audio
