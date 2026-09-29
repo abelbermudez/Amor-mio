@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOVEFLIX - Un poquito de Nosotros</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <header class="navbar">
+        <div class="nav-left">
+            <h1 class="logo">LOVE<span>FLIX</span></h1>
+            <nav class="nav-links">
+                <a href="#" class="nav-link" onclick="switchTab('inicio')">Inicio</a>
+                <a href="#" class="nav-link active" onclick="switchTab('series')">Series</a>
+                <a href="#" class="nav-link" onclick="switchTab('musica')">Música</a>
+                <a href="#" class="nav-link" onclick="switchTab('milista')">Mi lista</a>
+            </nav>
+        </div>
+        <button class="btn-profiles">Gestionar perfiles</button>
+    </header>
+
+    <!-- SECCIÓN: INICIO -->
+    <div id="tab-inicio" class="tab-content">
+        <!-- Hero Banner -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="badge"><span class="badge-n">N</span> SERIE</div>
+                <h1 class="hero-title">Un poquito de Nosotros</h1>
+                <p class="hero-stats">100% Amor • 1 año 3 meses • Romance • Nuestra Historia</p>
+                <p class="hero-description">
+                    Una serie dedicada a la persona que alegra cada uno de mis días. Gracias por 15 meses llenos de risas, momentos inolvidables y un amor increíble. Es mi lugar favorito en el mundo.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-play" onclick="openEpisode(1)">
+                        <i data-lucide="play"></i> Reproducir
+                    </button>
+                    <button class="btn btn-info" onclick="switchTab('series')">
+                        <i data-lucide="info"></i> Más información
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Episodios -->
+        <section class="episodes-section">
+            <h2 class="section-title">Episodios</h2>
+            <div class="episodes-grid">
+                <!-- Episodio 1 -->
+                <div class="episode-card" onclick="openEpisode(1)">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80" alt="Episodio 1">
+                        <span class="card-number">1</span>
+                        <span class="card-duration">15m</span>
+                    </div>
+                </div>
+                <!-- Episodio 2 -->
+                <div class="episode-card" onclick="openEpisode(2)">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="Episodio 2">
+                        <span class="card-number">2</span>
+                        <span class="card-duration">45m</span>
+                    </div>
+                </div>
+                <!-- Episodio 3 -->
+                <div class="episode-card" onclick="openEpisode(3)">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" alt="Episodio 3">
+                        <span class="card-number">3</span>
+                        <span class="card-duration">∞</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- SECCIÓN: SERIES (5 Series incluidas) -->
+    <div id="tab-series" class="tab-content active">
+        <div class="series-container">
+            <h1 class="page-title">Nuestra Historia</h1>
+            <p class="page-subtitle">Una colección de los capítulos más especiales de nuestra vida juntos</p>
+
+            <!-- Categoría 1: Los Inicios -->
+            <div class="category-block" style="margin-bottom: 40px;">
+                <h2 class="category-title">Temporada 1: Cómo empezó todo</h2>
+                <div class="series-grid">
+                    
+                    <!-- Serie 1 -->
+                    <div class="series-card">
+                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80" alt="Serie 1">
+                        <div class="series-info">
+                            <span class="series-match">100% Coincidencia</span>
+                            <h3>1. El Primer Chispazo</h3>
+                            <p>El día exacto en que nos conocimos. Ese instante en el que una simple mirada cambió el destino de nuestras vidas para siempre.</p>
+                        </div>
+                    </div>
+
+                    <!-- Serie 2 -->
+                    <div class="series-card">
+                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80" alt="Serie 2">
+                        <div class="series-info">
+                            <span class="series-match">99% Coincidencia</span>
+                            <h3>2. Nuestra Primera Cita</h3>
+                            <p>Llenos de nervios, risas inolvidables y pláticas infinitas donde nos dimos cuenta de que éramos el uno para el otro.</p>
+                        </div>
+                    </div>
+
+                    <!-- Serie 3 -->
+                    <div class="series-card">
+                        <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80" alt="Serie 3">
+                        <div class="series-info">
+                            <span class="series-match">100% Amor</span>
+                            <h3>3. El Sí Oficial</h3>
+                            <p>El momento en que decidimos caminar juntos como pareja y formalizar este hermoso capítulo de nuestro gran amor.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Categoría 2: Aventuras y Futuro -->
+            <div class="category-block">
+                <h2 class="category-title">Temporada 2: Aventuras y Promesas</h2>
+                <div class="series-grid">
+
+                    <!-- Serie 4 -->
+                    <div class="series-card">
+                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80" alt="Serie 4">
+                        <div class="series-info">
+                            <span class="series-match">98% Coincidencia</span>
+                            <h3>4. Escapadas y Viajes</h3>
+                            <p>Nuestras salidas, paseos y descubrimientos tomados de la mano, guardando recuerdos inolvidables en cada lugar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Serie 5 -->
+                    <div class="series-card">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Serie 5">
+                        <div class="series-info">
+                            <span class="series-match">100% Eterno</span>
+                            <h3>5. Un Futuro Juntos</h3>
+                            <p>Todos los sueños, proyectos y metas que estamos construyendo día a día para vivir una vida entera uno al lado del otro.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SECCIÓN: MÚSICA -->
+    <div id="tab-musica" class="tab-content">
+        <div class="music-container">
+            <h1 class="page-title">Música</h1>
+            <div class="player-card">
+                <div class="vinyl-container">
+                    <div class="vinyl-disc" id="vinyl">
+                        <div class="vinyl-center"></div>
+                    </div>
+                    <i data-lucide="music" class="music-icon"></i>
+                </div>
+                <div class="player-info">
+                    <h2>MI ESPOSA | NUESTRA HISTORIA</h2>
+                    <button class="btn-heart"><i data-lucide="heart"></i></button>
+                </div>
+                <div class="player-controls">
+                    <button class="btn-play-music" onclick="togglePlayMusic()">
+                        <i id="play-icon" data-lucide="play"></i>
+                    </button>
+                    <div class="progress-bar-container">
+                        <span id="current-time">0:00</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <span>2:57</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN: MI LISTA -->
+    <div id="tab-milista" class="tab-content">
+        <div class="reasons-container">
+            <h1 class="reasons-title">Razones por las que le amo</h1>
+            <p class="reasons-subtitle">Cada día descubro nuevos motivos para quererle</p>
+            
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <p>Por la forma tan linda en la que me apoya, me escucha y está para mí siempre.</p>
+                </div>
+                <div class="reason-card">
+                    <p>Por su sonrisa tan hermosa que me encanta.</p>
+                </div>
+                <div class="reason-card">
+                    <p>Por la forma en que me cautiva su mirada.</p>
+                </div>
+                <div class="reason-card">
+                    <p>Porque quiero creemos un futuro juntos.</p>
+                </div>
+                <div class="reason-card">
+                    <p>Porque simplemente la amo con todas mis fuerzas y mi alma.</p>
+                </div>
+                <div class="reason-card">
+                    <p>Porque es todo lo que siempre soñé.</p>
+                </div>
+                <div class="reason-card">
+                    <p>Porque amo la manera que me ama a mí.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE EPISODIOS -->
+    <div id="modal-episode" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-body">
+                <img id="modal-img" src="" alt="Episodio">
+                <div class="modal-text">
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-desc"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
