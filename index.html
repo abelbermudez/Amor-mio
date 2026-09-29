@@ -160,39 +160,52 @@
     </div>
 
     <!-- SECCIÓN: MÚSICA -->
-    <div id="tab-musica" class="tab-content">
-        <div class="music-container">
-            <h1 class="page-title">Música</h1>
-            <div class="player-card">
-                <div class="vinyl-container">
-                    <div class="vinyl-disc" id="vinyl">
-                        <div class="vinyl-center"></div>
-                    </div>
-                    <i data-lucide="music" class="music-icon"></i>
+<div id="tab-musica" class="tab-content">
+    <div class="music-container">
+        <h1 class="page-title">Música</h1>
+        
+        <div class="player-card-horizontal">
+            <!-- Columna Izquierda: Carátula / Disco -->
+            <div class="player-left">
+                <div class="album-cover">
+                    <i data-lucide="music" class="music-icon-large"></i>
                 </div>
-                
-                <div class="player-info">
-                    <h2>MI ESPOSA | NUESTRA HISTORIA</h2>
-                    <button class="btn-heart"><i data-lucide="heart"></i></button>
+            </div>
+
+            <!-- Columna Derecha: Información y Controles -->
+            <div class="player-right">
+                <div class="track-header">
+                    <span class="now-playing-tag">NOW PLAYING</span>
+                    <h2 class="track-title">MI ESPOSA | NUESTRA HISTORIA</h2>
+                    <p class="track-subtitle">Puerto donde descansar</p>
                 </div>
 
-                <audio id="audio-player" src="https://www.dropbox.com/scl/fi/qderq8kmt5lenqmlfjrqh/Puerto_donde_descansar.mp3?rlkey=muq9emda7c1dum0cg6rj3bptt&st=2ro6yi2e&dl=1"></audio>
-
-                <div class="player-controls">
-                    <button class="btn-play-music" onclick="togglePlayMusic()">
+                <!-- Controles principales -->
+                <div class="player-controls-row">
+                    <button class="btn-ctrl"><i data-lucide="skip-back"></i></button>
+                    <button class="btn-play-music-lg" onclick="togglePlayMusic()">
                         <i id="play-icon" data-lucide="play"></i>
                     </button>
-                    <div class="progress-bar-container">
+                    <button class="btn-ctrl"><i data-lucide="skip-forward"></i></button>
+                    <button class="btn-ctrl btn-heart"><i data-lucide="heart"></i></button>
+                </div>
+
+                <!-- Barra de progreso -->
+                <div class="progress-section">
+                    <div class="progress-bar" id="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="time-stamps">
                         <span id="current-time">0:00</span>
-                        <div class="progress-bar" id="progress-bar">
-                            <div class="progress-fill" id="progress-fill"></div>
-                        </div>
                         <span id="total-duration">2:59</span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <audio id="audio-player" src="https://www.dropbox.com/scl/fi/qderq8kmt5lenqmlfjrqh/Puerto_donde_descansar.mp3?rlkey=muq9emda7c1dum0cg6rj3bptt&st=2ro6yi2e&dl=1"></audio>
     </div>
+</div>
 
     <!-- SECCIÓN: MI LISTA -->
     <div id="tab-milista" class="tab-content">

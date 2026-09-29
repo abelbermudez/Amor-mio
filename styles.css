@@ -329,7 +329,7 @@ body {
     line-height: 1.4;
 }
 
-/* Sección Música */
+/* Sección Música - Estilo Horizontal Gradient */
 #tab-musica.active {
     display: flex;
     flex-direction: column;
@@ -346,110 +346,124 @@ body {
     align-items: center;
 }
 
-.player-card {
-    background: #181818;
-    padding: 30px;
-    border-radius: 12px;
+.player-card-horizontal {
+    background: linear-gradient(135deg, #7a2850 0%, #3b1736 50%, #1e0e24 100%);
+    border-radius: 20px;
+    padding: 30px 40px;
     width: 100%;
-    max-width: 380px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    max-width: 680px;
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
 }
 
-.vinyl-container {
-    position: relative;
-    width: 180px;
-    height: 180px;
-    margin: 0 auto 20px;
+/* Columna Izquierda: Carátula */
+.player-left {
+    flex-shrink: 0;
+}
+
+.album-cover {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-.vinyl-disc {
-    width: 100%;
-    height: 100%;
-    background: repeating-radial-gradient(#111, #111 2px, #222 3px, #222 4px);
-    border-radius: 50%;
+.music-icon-large {
+    width: 65px;
+    height: 65px;
+    color: #ffffff;
+}
+
+/* Columna Derecha: Información */
+.player-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.now-playing-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+}
+
+.track-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 2px;
+}
+
+.track-subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Controles */
+.player-controls-row {
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: transform 0.5s linear;
+    gap: 18px;
+    margin-top: 4px;
 }
 
-.vinyl-disc.playing {
-    animation: spin 3s linear infinite;
-}
-
-@keyframes spin {
-    100% { transform: rotate(360deg); }
-}
-
-.vinyl-center {
-    width: 50px;
-    height: 50px;
-    background: #e50914;
-    border-radius: 50%;
-    border: 4px solid #fff;
-}
-
-.music-icon {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    color: #a3a3a3;
-}
-
-.player-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.player-info h2 {
-    font-size: 15px;
-    text-align: left;
-}
-
-.btn-heart {
+.btn-ctrl {
     background: none;
     border: none;
-    color: #a3a3a3;
+    color: rgba(255, 255, 255, 0.8);
     cursor: pointer;
-}
-
-.btn-heart:hover {
-    color: #e50914;
-}
-
-.btn-play-music {
-    background: #e50914;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 16px;
-    cursor: pointer;
+    transition: transform 0.2s, color 0.2s;
 }
 
-.progress-bar-container {
+.btn-ctrl:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.btn-play-music-lg {
+    background: #ffffff;
+    border: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    color: #3b1736;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 12px;
-    color: #a3a3a3;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.btn-play-music-lg:hover {
+    transform: scale(1.08);
+}
+
+/* Barra de progreso */
+.progress-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .progress-bar {
-    flex: 1;
-    height: 6px;
-    background: #333;
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 3px;
     overflow: hidden;
     cursor: pointer;
@@ -458,8 +472,32 @@ body {
 .progress-fill {
     width: 0%;
     height: 100%;
-    background: #e50914;
+    background: #ffffff;
     transition: width 0.1s linear;
+}
+
+.time-stamps {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Adaptación Mobile */
+@media (max-width: 550px) {
+    .player-card-horizontal {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px;
+        gap: 20px;
+    }
+    .player-right {
+        align-items: center;
+        width: 100%;
+    }
+    .progress-section {
+        width: 100%;
+    }
 }
 
 /* Sección Mi Lista */
