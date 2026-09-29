@@ -1,7 +1,7 @@
 // Inicializar iconos de Lucide
 lucide.createIcons();
 
-// Datos de los episodios con las URLs reales configuradas en tu HTML
+// 1. DATOS DE LOS EPISODIOS (SECCIÓN INICIO)
 const episodesData = {
     1: {
         title: "1. El inicio de algo bonito",
@@ -20,7 +20,41 @@ const episodesData = {
     }
 };
 
-// Cambiar de Pestaña (Navegación)
+// 2. DATOS DE LAS SERIES (SECCIÓN SERIES)
+const seriesData = {
+    1: {
+        title: "1. El Primer Chispazo",
+        description: "El día exacto en que supimos que fue amor. Ese instante en el que una simple mirada cambió el destino de nuestras vidas para siempre.",
+        image: "https://i.ibb.co/dwb6ng1Y/IMG-20220704-WA0194.jpg",
+        isVideo: false
+    },
+    2: {
+        title: "2. Nuestra Primera Cita",
+        description: "Llenos de nervios, risas inolvidables y pláticas infinitas donde nos dimos cuenta de que éramos el uno para el otro.",
+        image: "https://i.ibb.co/wTP0n5f/IMG-20260724-141750919.jpg",
+        isVideo: false
+    },
+    3: {
+        title: "3. El Sí Oficial",
+        description: "El momento en que decidimos caminar juntos como pareja y formalizar este hermoso capítulo de nuestro gran amor.",
+        videoUrl: "https://streamable.com/e/e1es11?",
+        isVideo: true
+    },
+    4: {
+        title: "4. Escapadas y Viajes",
+        description: "Nuestras salidas, paseos y descubrimientos tomados de la mano, guardando recuerdos inolvidables en cada lugar.",
+        image: "https://i.ibb.co/hx12DDRh/IMG-20260724-140429960.jpg",
+        isVideo: false
+    },
+    5: {
+        title: "5. Un Futuro Juntos",
+        description: "Todos los sueños, proyectos y metas que estamos construyendo día a día para vivir una vida entera uno al lado del otro.",
+        image: "https://i.ibb.co/nNcQnkNH/20260724-122757.jpg",
+        isVideo: false
+    }
+};
+
+// 3. CAMBIAR DE PESTAÑA (NAVEGACIÓN)
 function switchTab(tabName) {
     document.querySelectorAll('.tab-content').forEach(tab => {
         tab.classList.remove('active');
@@ -40,18 +74,42 @@ function switchTab(tabName) {
     if (activeLink) activeLink.classList.add('active');
 }
 
-// Abrir Ventana Modal del Episodio
+// 4. ABRIR MODAL DESDE INICIO (EPISODIOS)
 function openEpisode(id) {
     const data = episodesData[id];
     if (data) {
         document.getElementById('modal-title').textContent = data.title;
         document.getElementById('modal-desc').textContent = data.description;
-        document.getElementById('modal-img').src = data.image;
+        
+        const modalImgWrapper = document.querySelector('.modal-img-wrapper');
+        modalImgWrapper.innerHTML = `<img id="modal-img" src="${data.image}" alt="${data.title}" style="width:100%; height:100%; object-fit:cover;">`;
+        
         document.getElementById('modal-episode').style.display = 'flex';
     }
 }
 
-// Cerrar Ventana Modal
+// 5. ABRIR MODAL DESDE SERIES (SELECCIÓN DE TARJETAS Y VIDEO)
+function openSeriesModal(id) {
+    const data = seriesData[id];
+    if (!data) return;
+
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc = document.getElementById('modal-desc');
+    const modalImgWrapper = document.querySelector('.modal-img-wrapper');
+
+    modalTitle.textContent = data.title;
+    modalDesc.textContent = data.description;
+
+    if (data.isVideo) {
+        modalImgWrapper.innerHTML = `<iframe allow="fullscreen" allowfullscreen src="${data.videoUrl}" style="width:100%; height:100%; border:none;"></iframe>`;
+    } else {
+        modalImgWrapper.innerHTML = `<img id="modal-img" src="${data.image}" alt="${data.title}" style="width:100%; height:100%; object-fit:cover;">`;
+    }
+
+    document.getElementById('modal-episode').style.display = 'flex';
+}
+
+// 6. CERRAR VENTANA MODAL
 function closeModal() {
     document.getElementById('modal-episode').style.display = 'none';
 }
@@ -64,7 +122,7 @@ window.onclick = function(event) {
     }
 };
 
-// Reproducir y Pausar Música
+// 7. MANEJO DEL REPRODUCTOR DE AUDIO (MÚSICA)
 const audio = document.getElementById('audio-player');
 const playIcon = document.getElementById('play-icon');
 const vinyl = document.getElementById('vinyl');
@@ -76,33 +134,37 @@ function togglePlayMusic() {
     if (!audio) return;
     
     if (audio.paused) {
-        audio.play();
-        playIcon.setAttribute('data-lucide', 'pause');
-        vinyl.classList.add('playing');
+        audio.play().catch(err => console.log("Error al reproducir audio:", err));
+        if (playIcon) playIcon.setAttribute('data-lucide', 'pause');
+        if (vinyl) vinyl.classList.add('playing');
     } else {
         audio.pause();
-        playIcon.setAttribute('data-lucide', 'play');
-        vinyl.classList.remove('playing');
+        if (playIcon) playIcon.setAttribute('data-lucide', 'play');
+        if (vinyl) vinyl.classList.remove('playing');
     }
-    lucide.createIcons();
+    if (window.lucide) lucide.createIcons();
 }
 
-// Actualizar barra de progreso y tiempo actual
+// Cargar duración y progreso del audio
 if (audio) {
+    audio.addEventListener('loadedmetadata', () => {
+        const totalMin = Math.floor(audio.duration / 60);
+        const totalSec = Math.floor(audio.duration % 60);
+        if (totalDurationEl) {
+            totalDurationEl.textContent = `${totalMin}:${totalSec < 10 ? '0' : ''}${totalSec}`;
+        }
+    });
+
     audio.addEventListener('timeupdate', () => {
         if (audio.duration) {
             const progressPercent = (audio.currentTime / audio.duration) * 100;
-            progressFill.style.width = `${progressPercent}%`;
+            if (progressFill) progressFill.style.width = `${progressPercent}%`;
 
-            // Formatear tiempo actual
             const currentMin = Math.floor(audio.currentTime / 60);
             const currentSec = Math.floor(audio.currentTime % 60);
-            currentTimeEl.textContent = `${currentMin}:${currentSec < 10 ? '0' : ''}${currentSec}`;
-
-            // Formatear duración total
-            const totalMin = Math.floor(audio.duration / 60);
-            const totalSec = Math.floor(audio.duration % 60);
-            totalDurationEl.textContent = `${totalMin}:${totalSec < 10 ? '0' : ''}${totalSec}`;
+            if (currentTimeEl) {
+                currentTimeEl.textContent = `${currentMin}:${currentSec < 10 ? '0' : ''}${currentSec}`;
+            }
         }
     });
 }

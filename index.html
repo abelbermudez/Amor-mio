@@ -90,7 +90,7 @@
                 <h2 class="category-title">Temporada 1: Cómo empezó todo</h2>
                 <div class="series-grid">
                     <!-- Serie 1 -->
-                    <div class="series-card">
+                    <div class="series-card" onclick="openSeriesModal(1)">
                         <div class="media-container">
                             <img src="https://i.ibb.co/dwb6ng1Y/IMG-20220704-WA0194.jpg" alt="Serie 1">
                         </div>
@@ -102,7 +102,7 @@
                     </div>
 
                     <!-- Serie 2 -->
-                    <div class="series-card">
+                    <div class="series-card" onclick="openSeriesModal(2)">
                         <div class="media-container">
                             <img src="https://i.ibb.co/wTP0n5f/IMG-20260724-141750919.jpg" alt="Serie 2">
                         </div>
@@ -113,8 +113,8 @@
                         </div>
                     </div>
 
-                    <!-- Serie 3 (Video) -->
-                    <div class="series-card">
+                    <!-- Serie 3 (Video Streamable) -->
+                    <div class="series-card" onclick="openSeriesModal(3)">
                         <div class="media-container">
                             <iframe allow="fullscreen" allowfullscreen src="https://streamable.com/e/e1es11?"></iframe>
                         </div>
@@ -126,6 +126,38 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Categoría 2: Aventuras y Futuro -->
+            <div class="category-block">
+                <h2 class="category-title">Temporada 2: Aventuras y Promesas</h2>
+                <div class="series-grid">
+                    <!-- Serie 4 -->
+                    <div class="series-card" onclick="openSeriesModal(4)">
+                        <div class="media-container">
+                            <img src="https://i.ibb.co/hx12DDRh/IMG-20260724-140429960.jpg" alt="Serie 4">
+                        </div>
+                        <div class="series-info">
+                            <span class="series-match">98% Coincidencia</span>
+                            <h3>4. Escapadas y Viajes</h3>
+                            <p>Nuestras salidas, paseos y descubrimientos tomados de la mano, guardando recuerdos inolvidables en cada lugar.</p>
+                        </div>
+                    </div>
+
+                    <!-- Serie 5 -->
+                    <div class="series-card" onclick="openSeriesModal(5)">
+                        <div class="media-container">
+                            <img src="https://i.ibb.co/nNcQnkNH/20260724-122757.jpg" alt="Serie 5">
+                        </div>
+                        <div class="series-info">
+                            <span class="series-match">100% Eterno</span>
+                            <h3>5. Un Futuro Juntos</h3>
+                            <p>Todos los sueños, proyectos y metas que estamos construyendo día a día para vivir una vida entera uno al lado del otro.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
             <!-- Categoría 2: Aventuras y Futuro -->
             <div class="category-block">
@@ -176,7 +208,7 @@
                     <button class="btn-heart"><i data-lucide="heart"></i></button>
                 </div>
 
-                <audio id="audio-player" src="https://www.dropbox.com/scl/fi/qderq8kmt5lenqmlfjrqh/Puerto_donde_descansar.mp3?rlkey=muq9emda7c1dum0cg6rj3bptt&st=ff681d1j&raw=1"></audio>
+                <audio id="audio-player" src="https://www.dropbox.com/scl/fi/qderq8kmt5lenqmlfjrqh/Puerto_donde_descansar.mp3?rlkey=muq9emda7c1dum0cg6rj3bptt&st=2ro6yi2e&dl=0"></audio>
 
                 <div class="player-controls">
                     <button class="btn-play-music" onclick="togglePlayMusic()">
@@ -187,7 +219,7 @@
                         <div class="progress-bar" id="progress-bar">
                             <div class="progress-fill" id="progress-fill"></div>
                         </div>
-                        <span id="total-duration">0:00</span>
+                        <span id="total-duration">2:59</span>
                     </div>
                 </div>
             </div>
