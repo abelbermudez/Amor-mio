@@ -615,3 +615,183 @@ body {
     .nav-link { font-size: 12px; }
     .btn-profiles { display: none; }
 }
+
+/* ==========================================
+   ESTILOS REPRODUCTOR DE MÚSICA (DEGRADADO)
+   ========================================== */
+
+#tab-musica.active {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 100px);
+}
+
+.music-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Tarjeta Principal con Degradado Rosa/Morado */
+.player-card-horizontal {
+    background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #f43f5e 100%) !important;
+    border-radius: 24px !important;
+    padding: 35px 40px !important;
+    width: 100%;
+    max-width: 650px;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 35px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-sizing: border-box;
+}
+
+/* Círculo de la Carátula */
+.player-left {
+    flex-shrink: 0;
+}
+
+.album-cover {
+    width: 140px;
+    height: 140px;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 3px solid rgba(255, 255, 255, 0.4) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.music-icon-large {
+    width: 60px !important;
+    height: 60px !important;
+    color: #ffffff !important;
+}
+
+/* Lado Derecho */
+.player-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: #ffffff;
+}
+
+.now-playing-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.track-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff !important;
+    margin: 3px 0 0 0;
+    line-height: 1.2;
+}
+
+.track-subtitle {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 2px;
+}
+
+/* Botones de Control */
+.player-controls-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 4px;
+}
+
+.btn-ctrl {
+    background: none !important;
+    border: none !important;
+    color: #ffffff !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.btn-ctrl:hover {
+    transform: scale(1.15);
+}
+
+.btn-play-music-lg {
+    background: #ffffff !important;
+    border: none !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    color: #ec4899 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3) !important;
+    transition: transform 0.2s ease;
+}
+
+.btn-play-music-lg:hover {
+    transform: scale(1.1);
+}
+
+/* Barra de Progreso */
+.progress-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #ffffff !important;
+    transition: width 0.1s linear;
+}
+
+.time-stamps {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+}
+
+/* Ajuste Celular */
+@media (max-width: 580px) {
+    .player-card-horizontal {
+        flex-direction: column !important;
+        text-align: center;
+        padding: 30px 20px !important;
+        gap: 20px !important;
+    }
+    .player-right {
+        align-items: center;
+        width: 100%;
+    }
+}

@@ -165,14 +165,14 @@
         <h1 class="page-title">Música</h1>
         
         <div class="player-card-horizontal">
-            <!-- Columna Izquierda: Carátula / Disco -->
+            <!-- Lado Izquierdo: Círculo de la Carátula -->
             <div class="player-left">
                 <div class="album-cover">
                     <i data-lucide="music" class="music-icon-large"></i>
                 </div>
             </div>
 
-            <!-- Columna Derecha: Información y Controles -->
+            <!-- Lado Derecho: Título y Controles -->
             <div class="player-right">
                 <div class="track-header">
                     <span class="now-playing-tag">NOW PLAYING</span>
@@ -180,17 +180,17 @@
                     <p class="track-subtitle">Puerto donde descansar</p>
                 </div>
 
-                <!-- Controles principales -->
+                <!-- Controles de Reproducción -->
                 <div class="player-controls-row">
-                    <button class="btn-ctrl"><i data-lucide="skip-back"></i></button>
-                    <button class="btn-play-music-lg" onclick="togglePlayMusic()">
+                    <button class="btn-ctrl" type="button"><i data-lucide="skip-back"></i></button>
+                    <button class="btn-play-music-lg" type="button" onclick="togglePlayMusic()">
                         <i id="play-icon" data-lucide="play"></i>
                     </button>
-                    <button class="btn-ctrl"><i data-lucide="skip-forward"></i></button>
-                    <button class="btn-ctrl btn-heart"><i data-lucide="heart"></i></button>
+                    <button class="btn-ctrl" type="button"><i data-lucide="skip-forward"></i></button>
+                    <button class="btn-ctrl btn-heart" type="button"><i data-lucide="heart"></i></button>
                 </div>
 
-                <!-- Barra de progreso -->
+                <!-- Barra de Progreso y Tiempos -->
                 <div class="progress-section">
                     <div class="progress-bar" id="progress-bar">
                         <div class="progress-fill" id="progress-fill"></div>
