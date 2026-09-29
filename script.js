@@ -1,7 +1,7 @@
 // Inicializar iconos de Lucide
 lucide.createIcons();
 
-// Datos de los episodios
+// Datos de los episodios con las URLs reales configuradas en tu HTML
 const episodesData = {
     1: {
         title: "1. El inicio de algo bonito",
@@ -15,8 +15,8 @@ const episodesData = {
     },
     3: {
         title: "3. Por muchos meses más",
-        description: "1 año y 2 meses son solo el comienzo de todo lo que nos espera por vivir juntos. Te amo con todo mi corazón.",
-        image: "https://i.ibb.co/dwb6ng1Y/IMG-20220704-WA0194.jpg"
+        description: "1 año y 3 meses son solo el comienzo de todo lo que nos espera por vivir juntos. Te amo con todo mi corazón.",
+        image: "https://i.ibb.co/fz0Khs9T/In-Shot-20260122-135553607.jpg"
     }
 };
 
@@ -30,11 +30,12 @@ function switchTab(tabName) {
         link.classList.remove('active');
     });
 
-    document.getElementById(`tab-${tabName}`).classList.add('active');
+    const selectedTab = document.getElementById(`tab-${tabName}`);
+    if (selectedTab) selectedTab.classList.add('active');
     
     // Marcar enlace activo
     const activeLink = Array.from(document.querySelectorAll('.nav-link')).find(
-        a => a.getAttribute('onclick').includes(tabName)
+        a => a.getAttribute('onclick') && a.getAttribute('onclick').includes(tabName)
     );
     if (activeLink) activeLink.classList.add('active');
 }
@@ -72,6 +73,8 @@ const currentTimeEl = document.getElementById('current-time');
 const totalDurationEl = document.getElementById('total-duration');
 
 function togglePlayMusic() {
+    if (!audio) return;
+    
     if (audio.paused) {
         audio.play();
         playIcon.setAttribute('data-lucide', 'pause');
@@ -85,19 +88,21 @@ function togglePlayMusic() {
 }
 
 // Actualizar barra de progreso y tiempo actual
-audio.addEventListener('timeupdate', () => {
-    if (audio.duration) {
-        const progressPercent = (audio.currentTime / audio.duration) * 100;
-        progressFill.style.width = `${progressPercent}%`;
+if (audio) {
+    audio.addEventListener('timeupdate', () => {
+        if (audio.duration) {
+            const progressPercent = (audio.currentTime / audio.duration) * 100;
+            progressFill.style.width = `${progressPercent}%`;
 
-        // Formatear tiempo actual (minutos:segundos)
-        const currentMin = Math.floor(audio.currentTime / 60);
-        const currentSec = Math.floor(audio.currentTime % 60);
-        currentTimeEl.textContent = `${currentMin}:${currentSec < 10 ? '0' : ''}${currentSec}`;
+            // Formatear tiempo actual
+            const currentMin = Math.floor(audio.currentTime / 60);
+            const currentSec = Math.floor(audio.currentTime % 60);
+            currentTimeEl.textContent = `${currentMin}:${currentSec < 10 ? '0' : ''}${currentSec}`;
 
-        // Formatear duración total
-        const totalMin = Math.floor(audio.duration / 60);
-        const totalSec = Math.floor(audio.duration % 60);
-        totalDurationEl.textContent = `${totalMin}:${totalSec < 10 ? '0' : ''}${totalSec}`;
-    }
-});
+            // Formatear duración total
+            const totalMin = Math.floor(audio.duration / 60);
+            const totalSec = Math.floor(audio.duration % 60);
+            totalDurationEl.textContent = `${totalMin}:${totalSec < 10 ? '0' : ''}${totalSec}`;
+        }
+    });
+}
