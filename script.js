@@ -18,7 +18,7 @@ const episodesData = {
     3: {
         title: "3. Por muchos meses más",
         description: "1 año y 2 meses son solo el comienzo de todo lo que nos espera por vivir juntos. Te amo con todo mi corazón.",
-        image: "https://i.ibb.co/fz0Khs9T/In-Shot-20260122-135553607.jpg"
+        image: "https://i.ibb.co/jZWkZgSt/IMG-20260724-141605586.jpg"
     }
 };
 
@@ -27,7 +27,7 @@ const seriesData = {
     1: {
         title: "1. El Primer Chispazo",
         description: "El día exacto en que supimos que fue amor. Ese instante en el que una simple mirada cambió el destino de nuestras vidas para siempre.",
-        image: "https://i.ibb.co/dwb6ng1Y/IMG-20220704-WA0194.jpg",
+        image: "https://i.ibb.co/j9PzHdt5/IMG-20260724-141749359.jpg",
         isVideo: false
     },
     2: {
