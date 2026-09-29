@@ -17,7 +17,7 @@ const episodesData = {
     },
     3: {
         title: "3. Por muchos meses más",
-        description: "1 año y 3 meses son solo el comienzo de todo lo que nos espera por vivir juntos. Te amo con todo mi corazón.",
+        description: "1 año y 2 meses son solo el comienzo de todo lo que nos espera por vivir juntos. Te amo con todo mi corazón.",
         image: "https://i.ibb.co/fz0Khs9T/In-Shot-20260122-135553607.jpg"
     }
 };
